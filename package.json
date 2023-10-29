@@ -12,6 +12,8 @@
     "vite": "^4.3.2"
   },
   "dependencies": {
+    "gsap": "^3.12.2",
+    "split-text-js": "^1.0.3",
     "three": "^0.157.0"
   }
 }
