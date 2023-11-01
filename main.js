@@ -39,6 +39,7 @@ function changeCSSProperty() {
     var body = document.querySelector("body");
     var loader = document.querySelector(".loader-container");
     body.style.overflow = "auto";
+    body.style.overflowX = "hidden";
     loader.style.zIndex = "-10";
   }, 5500); // 5000 milliseconds = 5 seconds
 }

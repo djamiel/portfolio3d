@@ -6,20 +6,23 @@
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  background-color: #051014;
+  background-color: #000000;
   overflow: hidden;
+  display: flex;
 }
 .loader-container {
-  width: 100%;
+  width: 100vw;
   height: 105vh;
+  top: 0px;
+  left: 0px;
   position: absolute;
   z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #051014;
+  background-color: #000000;
 }
 .text-wrapper p {
   font-size: 7rem;
@@ -36,7 +39,7 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
 }
 .container {
   position: relative;
@@ -120,7 +123,7 @@ p {
 }
 
 #projectsBox a {
-  margin: 40px;
+  margin: 40px 0px;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   text-decoration: none;
@@ -157,7 +160,7 @@ p {
 #contactBox img {
   position: relative;
   width: 80px;
-  margin: 20px;
+  margin: 20px 0px;
   align-items: end;
 }
 .hidden {
@@ -171,4 +174,65 @@ p {
   opacity: 1;
   transform: translateX(0%);
   filter: blur(0px);
+}
+@media screen and (max-width: 800px) {
+  .text-wrapper p {
+    font-size: 3rem;
+  }
+  #introBox {
+    width: 90%;
+    left: 5%;
+  }
+  .kopBox {
+    width: 90%;
+  }
+
+  .pictogram {
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  #KopPagina {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  #OnderKop {
+    font-size: 20px;
+  }
+  .philosophyBox {
+    width: 100%;
+    left: 0%;
+    padding: 0px;
+  }
+  .philosophyBox h1 {
+    font-size: 30px;
+  }
+
+  .philosophyBox p {
+    font-size: 17px;
+    line-height: 35px;
+  }
+  #projectsBox {
+    top: 300px;
+    align-items: center;
+  }
+
+  #projectsBox h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  #projectsBox a {
+    margin: 30px 0px;
+    width: 90%;
+    background-color: #4848487d;
+  }
+  #projectsBox a h1 {
+    font-size: 30px;
+  }
+  #projectsBox a p {
+    font-size: 17px;
+    line-height: 30px;
+  }
 }
