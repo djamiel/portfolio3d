@@ -17,7 +17,7 @@ body {
   height: 105vh;
   top: 0px;
   left: 0px;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -31,7 +31,7 @@ body {
   margin: 0;
   line-height: 0;
 
-  &:nth-of-type(5) {
+  &:nth-of-type(4) {
     color: #bcedf6;
   }
 }

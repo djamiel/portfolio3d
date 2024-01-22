@@ -41,51 +41,51 @@ function changeCSSProperty() {
     body.style.overflow = "auto";
     body.style.overflowX = "hidden";
     loader.style.zIndex = "-10";
-  }, 5500); // 5000 milliseconds = 5 seconds
+  }, 4500); // 5000 milliseconds = 5 seconds
 }
 
 window.addEventListener("load", changeCSSProperty);
 
-loader.load(
-  "./assets/rocket.glb",
-  function (rocket) {
-    rocket.scene.scale.set(10, 10, 10);
-    rocket.scene.position.set(-20, -5, 10);
-    rocket.scene.rotation.set(0.5, 0, 0);
-    scene.add(rocket.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+// loader.load(
+//   "./assets/rocket.glb",
+//   function (rocket) {
+//     rocket.scene.scale.set(10, 10, 10);
+//     rocket.scene.position.set(-20, -5, 10);
+//     rocket.scene.rotation.set(0.5, 0, 0);
+//     scene.add(rocket.scene);
+//   },
+//   undefined,
+//   function (error) {
+//     console.error(error);
+//   }
+// );
 
-loader.load(
-  "./assets/earth.glb",
-  function (earth) {
-    earth.scene.scale.set(0.6, 0.6, 0.4);
-    earth.scene.position.set(13, -10, 10);
-    scene.add(earth.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+// loader.load(
+//   "./assets/earth.glb",
+//   function (earth) {
+//     earth.scene.scale.set(0.6, 0.6, 0.4);
+//     earth.scene.position.set(13, -10, 10);
+//     scene.add(earth.scene);
+//   },
+//   undefined,
+//   function (error) {
+//     console.error(error);
+//   }
+// );
 
-loader.load(
-  "./assets/low_poly_moon.glb",
-  function (moon) {
-    moon.scene.scale.set(0.2, 0.2, 0.2);
-    moon.scene.position.set(-10, 5, 10);
-    moon.scene.rotation.set(0, 5, 0);
-    scene.add(moon.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+// loader.load(
+//   "./assets/low_poly_moon.glb",
+//   function (moon) {
+//     moon.scene.scale.set(0.2, 0.2, 0.2);
+//     moon.scene.position.set(-10, 5, 10);
+//     moon.scene.rotation.set(0, 5, 0);
+//     scene.add(moon.scene);
+//   },
+//   undefined,
+//   function (error) {
+//     console.error(error);
+//   }
+// );
 
 const scene = new THREE.Scene();
 
@@ -107,7 +107,7 @@ camera.position.setZ(30);
 renderer.render(scene, camera);
 
 // light
-const pointLight = new THREE.PointLight(0xffffff, 1000, 100);
+const pointLight = new THREE.PointLight(0xffffff, 100, 100);
 pointLight.position.set(0, 5, 30);
 scene.add(pointLight);
 
@@ -181,23 +181,51 @@ Array(200).fill().forEach(addStar);
 // Array(5).fill().forEach(addPlanet3);
 
 //avatar
-const avatarTexture = new THREE.TextureLoader().load("./assets/avatar.png");
+const textureLoader = new THREE.TextureLoader();
 
-const avatar = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial({ map: avatarTexture })
-);
+const cube3Geometry = new THREE.BoxGeometry(3, 3, 3);
+
+const textureCube3 = [
+  new THREE.MeshStandardMaterial({
+    map: textureLoader.load("./assets/cubeKant1.png"),
+  }),
+  new THREE.MeshStandardMaterial({
+    map: textureLoader.load("./assets/cubeKant2.png"),
+  }),
+  new THREE.MeshStandardMaterial({
+    map: textureLoader.load("./assets/cubeKant3.png"),
+  }),
+  new THREE.MeshStandardMaterial({
+    map: textureLoader.load("./assets/cubeKant4.png"),
+  }),
+  new THREE.MeshStandardMaterial({
+    map: textureLoader.load("./assets/cubeKant5.png"),
+  }),
+  new THREE.MeshStandardMaterial({
+    map: textureLoader.load("./assets/cubeKant6.png"),
+  }),
+];
+const avatar = new THREE.Mesh(cube3Geometry, textureCube3);
 
 scene.add(avatar);
 
 avatar.position.setX(7);
 avatar.position.setZ(20);
-avatar.position.setY(3);
+avatar.position.setY(0);
 
 // Scroll Animation
-
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
+  // moon.rotation.x += 0.05;
+  // moon.rotation.y += 0.075;
+  // moon.rotation.z += 0.05;
+
+  // jeff.rotation.y += 0.01;
+  // jeff.rotation.z += 0.01;
+
+  camera.position.z = t * 0.03 + 30;
+  camera.position.x = t * -0.0008;
+  camera.rotation.y = t * -0.0002;
 }
 
 document.body.onscroll = moveCamera;
